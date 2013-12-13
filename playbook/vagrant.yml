@@ -1,0 +1,29 @@
+---
+# vagrant.yml
+- hosts: all
+  user: vagrant
+  sudo: True
+  tasks:
+  - name: Update APT package cache
+    apt: update_cache=yes
+
+  - name: Install packages
+    apt: pkg={{ item }} state=installed
+    with_items:
+      - curl
+      - dnsutils
+      - fail2ban
+      - htop
+      - imagemagick
+      - iotop
+      - liblzma-dev
+      - libpcre3-dev
+      - mosh
+      - openssl
+      - pkg-config
+      - realpath
+      - vim
+      - zlib1g-dev
+
+  - name: Copy .bash_profile for root
+    copy: src=files/bash_profile dest=/root/.bash_profile owner=root
