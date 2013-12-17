@@ -25,5 +25,9 @@
       - vim
       - zlib1g-dev
 
+  - name: Update Message of the Day
+    copy: src=files/motd dest=/etc/motd owner=root
+
   - name: Copy .bash_profile for root
     copy: src=files/bash_profile dest=/root/.bash_profile owner=root
+
