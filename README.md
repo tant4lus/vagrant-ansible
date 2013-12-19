@@ -22,7 +22,9 @@ When you run the `vagrant up` vagrant goes through its `Vagrantfile` to begin cr
   config.vm.box_url = "http://files.vagrantup.com/precise32.box"
 ```
 
-Next we ask Vagrant to setup port forwarding. If you run an application server, web server, database, it will map the VM port 8080 to port 3751 on your local machine.  This means that http://localhost:3751 on your physical machine will get forwarded to http://virtualmachine:8080.
+Next we ask Vagrant to setup port forwarding. If you run an application server, web server, database, it will map the VM port 8080 to port 3751 on your local machine.  Likewise the VM port 80 is mapped to 3750 on the local machine.  This means that:
+* http://localhost:3750 (physical machine) --> http://virtualmachine:80 (vagramt vm)
+* http://localhost:3751 (physical machine) --> http://virtualmachine:8080 (vagramt vm)
 ```
   config.vm.network :forwarded_port, guest: 8080, host: 3751
   config.vm.network :forwarded_port, guest: 80, host: 3750
