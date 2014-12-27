@@ -66,7 +66,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Enable provisioning with Ansible
   config.vm.provision "ansible" do |ansible|
+    # Uncomment to use a different inventory file
+    # ansible.inventory_path = "vagrant_ansible_inventory_default"
     ansible.playbook = "playbook/vagrant.yml"
+    ansible.verbose = "-vvv"
+    ansible.sudo = true
+    ansible.limit = "all"
   end
 
   # Enable provisioning with Puppet stand alone.  Puppet manifests
